@@ -23,7 +23,7 @@ $pass = 'root';
 $connect = new \PDO($host, $login, $pass);*/
 
 /* ********************Индекс для поля email************* */
-/*$sql = "CREATE INDEX user_email_index ON user (email)";*/
+/*$sql = "CREATE UNIQUE INDEX user_email_index ON user (email)";*/
 
 /* *******индекс для запроса SELECT * FROM `users` WHERE `age` > 15************** */
 //$sql = "CREATE INDEX user_age_15_index ON user (age)";/
