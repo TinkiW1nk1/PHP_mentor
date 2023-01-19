@@ -1,52 +1,49 @@
 <?php
-include 'iImport.php';
-include 'DbImport.php';
-include "ReportImport.php";
-$data = [
-    ['name' => 'Tom', 'Age' => 25,'email' => 'test@gmail.com'],
-    ['name' => 'Oleg', 'Age' => 45,'email' => 'test2@gmail.com'],
-    ['name' => 'Nikita', 'Age' => 35,'email' => 'test3@gmail.com'],
-];
-function debug( $arr){
-    echo "<pre>";
-    var_dump($arr);
-    echo "</pre>";
-}
+include 'app/iImport.php';
+include 'app/DbImport.php';
+include "app/ReportImport.php";
 
-/*$importDb = new DbImport();
-$importDb->dataInsert($data);*/
+include 'newUser.php';
+/*if(!empty($_POST)){
+    $add = new DbImport();
+    $add->dataInsert($_POST);
+}*/
 
-$report = new ReportImport();
-$report->dataInsert($data);
 //*****************создание БД**********************************
-/*$host = 'localhost';
+/*$host = "mysql:host=localhost";
 $login = 'root';
 $pass = 'root';
-$connect = new mysqli($host, $login, $pass);
-$sql = "CREATE DATABASE Dz";
+$connect = new \PDO($host, $login, $pass);*/
+/*$sql = "CREATE DATABASE Dz";*/
+
+
+/*$host = "mysql:host=localhost;dbname=dz";
+$login = 'root';
+$pass = 'root';
+$connect = new \PDO($host, $login, $pass);*/
+
+/* ********************Индекс для поля email************* */
+/*$sql = "CREATE INDEX user_email_index ON user (email)";*/
+
+/* *******индекс для запроса SELECT * FROM `users` WHERE `age` > 15************** */
+//$sql = "CREATE INDEX user_age_15_index ON user (age)";/
+//$connect->query($sql);
+
+
+//*********************Создание таблицы*******************************
+/*$sql = "CREATE TABLE `dz`.`user`
+ ( `id` INT NOT NULL AUTO_INCREMENT ,
+ `name` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+ `email` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+ `age` INT(3) NOT NULL ,
+ `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`))
+ ENGINE = InnoDB";
+
 if ($connect->query($sql) === TRUE) {
     echo "Database created successfully";
 
 } else {
     echo "Error creating database: " . $connect->error;
-}
-
-$connect->close();*/
-
-//*********************Создание таблицы*******************************
-/*$host = 'localhost';
-$db = 'Dz';
-$login = 'root';
-$pass = 'root';
-$connect = new mysqli($host, $login, $pass, $db);
-$sql = "CREATE TABLE Users (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-firstname VARCHAR(30) NOT NULL,
-age INT(2) NOT NULL,
-email VARCHAR(50)
-)";
-if($connect->query($sql) === true){
-    echo "Table Create";
-}else{
-    echo 'Error';
 }*/
+
+
